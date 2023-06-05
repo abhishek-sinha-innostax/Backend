@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.innostax.CRUD.dao.UserRepositoryImpl;
 import com.innostax.CRUD.entity.User;
+import com.innostax.CRUD.service.ServiceImpl;
 
 @RestController
 public class UserController {
 
 	@Autowired
 	UserRepositoryImpl userRepository;
+	
+	@Autowired
+	ServiceImpl serviceImpl ; 
 
 	@PostMapping("/addUser")
 	public User addUser(@RequestBody User user) {
@@ -46,6 +50,9 @@ public class UserController {
 		return userRepository.deleteById(id) ;
 	}	
 	
-	
+	@GetMapping("/getAllUsersSortedByName")
+	public List<User> getAllUserSortedByName () {
+		return serviceImpl.sortedList(getAllUser()) ;
+	}
 
 }
