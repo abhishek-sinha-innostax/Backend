@@ -2,6 +2,7 @@ package com.innostax.CRUD.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,10 @@ public class ServiceImpl implements ServiceInter {
 	UserRepositoryImpl userRepository;
 
 	@Override
-	public List<User> sortedList(List<User> list) {
-
-		return helperToSort(list);
+	public List<User> sortedList(List<User> liist) {
+		 Collections.sort(liist);
+		 //System.out.println(liist)+"--->");
+		return liist;
 	}
 
 	private static List<User> helperToSort(List<User> list) {
@@ -34,6 +36,7 @@ public class ServiceImpl implements ServiceInter {
 	}
 
 	private static List<User> resultGen(ArrayList<String> Slist, List<User> list) {
+		List<String> arr= null;
 		int n = Slist.size();
 		List<User> result = new ArrayList<>();
 		System.out.println(Slist);

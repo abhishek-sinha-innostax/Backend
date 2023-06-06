@@ -3,7 +3,7 @@ package com.innostax.CRUD.entity;
 
 
 
-public class User {
+public class User implements Comparable{
 	private int id ;
 	private String name ; 
 	private String email ; 
@@ -44,7 +44,12 @@ public class User {
 		this.name = name;
 		this.email = email;
 		this.age = age;
-	} 
-	
-	
+	}
+
+
+	@Override
+	public int compareTo(Object o) {
+		User u = (User) o;
+		return this.name.compareTo(u.name);
+	}
 }
